@@ -2,6 +2,8 @@ class Movie < ActiveRecord::Base
 
   has_many :reviews
 
+  mount_uploader :image, ImageUploader
+
   validates :title,
     presence: true
 
@@ -27,7 +29,13 @@ class Movie < ActiveRecord::Base
     if reviews.size > 0  
       reviews.sum(:rating_out_of_ten)/reviews.size
     end
-    
+
+  end
+
+  private 
+
+  def movie_params
+    params.require(:movie).permit(:image)
   end
 
   protected 
