@@ -2,7 +2,19 @@
 
       def index
         @movies = Movie.all
-        @movies = Movie.search(params)
+
+        if params[:duration]
+          min_value = params[:duration].split('-')[0]
+          max_value = params[:duration].split('-')[1]
+        end
+
+        if max_value == nil 
+          max_value = Movie.maximum("runtime_in_minutes")+1
+        end
+
+        if params[:title] || params[:director] || params[:duration]
+          @movies = Movie.title(params[:title]).director(params[:director]).duration(min_value, max_value)
+        end
       end
 
       def show

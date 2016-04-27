@@ -24,31 +24,14 @@ class Movie < ActiveRecord::Base
 
   validate :release_date_is_in_the_past
 
+  scope :title, ->(title) { where("title LIKE ?", '%'+title+'%')}
+  scope :director, ->(director) { where("director LIKE ?", '%'+director+'%')}
+  scope :duration, ->(min_value, max_value) { where("runtime_in_minutes >= ? AND runtime_in_minutes < ?", min_value, max_value) }
+
   def review_average
 
     if reviews.size > 0  
       reviews.sum(:rating_out_of_ten)/reviews.size
-    end
-
-  end
-
-  def self.search(params)
- 
-    if params[:duration]
-      min_value = params[:duration].split('-')[0]
-      max_value = params[:duration].split('-')[1]
-    end
-
-    if max_value == nil 
-      max_value = Movie.maximum("runtime_in_minutes")+1
-    end
-
-    if params[:title] || params[:director] || params[:duration]
-      @movies = Movie.where("title LIKE ?", '%'+params[:title]+'%')
-        .where("director LIKE ?", '%'+params[:director]+'%')
-        .where("runtime_in_minutes >= ? AND runtime_in_minutes < ?", min_value, max_value)
-    else
-      all
     end
 
   end
