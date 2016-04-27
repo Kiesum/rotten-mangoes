@@ -1,14 +1,13 @@
 <h1>Users</h1>
 <hr>
+<p><%= link_to "Create a new user", new_admin_user_path %></p>
 <%= paginate @users %>
 <% @users.each do |user| %>
-  <p>
-    email:<%= user.email %><br/>
-    name: <%= user.lastname %>, <%= user.firstname %><br/>
-    created: <%= user.created_at %><br/>
-    last updated: <%= user.updated_at %><br/>
-    admin: <%= user.admin %><br/>
-    <hr>
-  </p>
+  <p><%= link_to user.email, admin_user_path(user) %></p>
+  <p>name: <%= user.lastname %>, <%= user.firstname %></p>
+  <p>created: <%= user.created_at %></p>
+  <p>last updated: <%= user.updated_at %></p>
+  <p>admin: <%= user.admin %></p>
+  <hr>
 <% end %>
 

@@ -6,10 +6,15 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-
+    @current_user = User.find(session[:user_id])
+    
     if @user.save
-      session[:user_id] = @user.id
-      redirect_to movies_path
+      if @current_user.admin
+        redirect_to admin_users_path, notice: "#{@user.email} was created successfully!"
+      else
+        session[:user_id] = @user.id
+        redirect_to movies_path 
+      end
     else
       render :new
     end
