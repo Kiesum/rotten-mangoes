@@ -32,8 +32,25 @@ class Movie < ActiveRecord::Base
 
   end
 
-  def self.search(title, director)
-    (where("title LIKE ?", "%#{title}%") + where("director LIKE ?", "%#{director}%")).uniq
+  def self.search(params)
+ 
+    if params[:duration]
+      min_value = params[:duration].split('-')[0]
+      max_value = params[:duration].split('-')[1]
+    end
+
+    if max_value == nil 
+      max_value = Movie.maximum("runtime_in_minutes")+1
+    end
+
+    if params[:title] || params[:director] || params[:duration]
+      @movies = Movie.where("title LIKE ?", '%'+params[:title]+'%')
+        .where("director LIKE ?", '%'+params[:director]+'%')
+        .where("runtime_in_minutes >= ? AND runtime_in_minutes < ?", min_value, max_value)
+    else
+      all
+    end
+
   end
 
   private 

@@ -3,8 +3,20 @@
   <hr>
 
 <%= form_tag(movies_path, :method => "get", id: "search-form") do %>
+<div>
 <%= text_field_tag :title, params[:title], placeholder: "title" %>
+</div>
+<div>
 <%= text_field_tag :director, params[:director], placeholder: "title" %>
+</div>
+ <div>
+    <%=select_tag :duration, options_for_select([
+      ['Any Duration','0'],
+      ['Under 90 minutes', '0-90'],
+      ['Between 90 and 120 minutes', '90-120'],
+      ['Over 120 minutes','120']]
+      )%>
+  </div>
 <%= submit_tag "Search" %>
 <% end %>
 
