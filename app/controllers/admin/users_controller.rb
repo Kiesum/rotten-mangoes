@@ -1,15 +1,19 @@
 class Admin::UsersController < ApplicationController
 
-  before_filter :require_admin
+  before_filter :restrict_access, :require_admin
 
-  def index
-    @users = User.all
+  def index 
+   @users = User.order(:lastname).page params[:page]
   end
+
 
   private
 
-  def require_admin
-    redirect_to(root_path) unless current_user && current_user.admin?
+   def require_admin
+    if !current_user.admin?
+      flash[:alert] = "You must be an administrator."
+      redirect_to(root_path)
+    end
   end
 
 end

@@ -1,7 +1,14 @@
 <h1>Users</h1>
-
+<hr>
+<%= paginate @users %>
 <% @users.each do |user| %>
-<p>
-<%= user.email %><br/>
-</p>
+  <p>
+    email:<%= user.email %><br/>
+    name: <%= user.lastname %>, <%= user.firstname %><br/>
+    created: <%= user.created_at %><br/>
+    last updated: <%= user.updated_at %><br/>
+    admin: <%= user.admin %><br/>
+    <hr>
+  </p>
 <% end %>
+
