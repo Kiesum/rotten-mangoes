@@ -4,10 +4,7 @@
 
 <%= form_tag(movies_path, :method => "get", id: "search-form") do %>
 <div>
-<%= text_field_tag :title, params[:title], placeholder: "title" %>
-</div>
-<div>
-<%= text_field_tag :director, params[:director], placeholder: "title" %>
+<%= text_field_tag :title_or_director, params[:title_or_director], placeholder: "title or director" %>
 </div>
  <div>
     <%=select_tag :duration, options_for_select([
