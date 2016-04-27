@@ -32,8 +32,8 @@ class Movie < ActiveRecord::Base
 
   end
 
-  def self.search(search)
-    where("title LIKE ?", "%#{search}%")
+  def self.search(title, director)
+    (where("title LIKE ?", "%#{title}%") + where("director LIKE ?", "%#{director}%")).uniq
   end
 
   private 

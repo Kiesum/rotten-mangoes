@@ -2,8 +2,8 @@
 
       def index
         @movies = Movie.all
-        if params[:search]
-          @movies = Movie.search(params[:search])
+        if params[:title] && params[:director]
+          @movies = Movie.search(params[:title], params[:director])
         else 
           @movies = Movie.all
         end

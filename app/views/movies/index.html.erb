@@ -3,7 +3,8 @@
   <hr>
 
 <%= form_tag(movies_path, :method => "get", id: "search-form") do %>
-<%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
+<%= text_field_tag :title, params[:title], placeholder: "title" %>
+<%= text_field_tag :director, params[:director], placeholder: "title" %>
 <%= submit_tag "Search" %>
 <% end %>
 
