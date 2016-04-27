@@ -32,6 +32,10 @@ class Movie < ActiveRecord::Base
 
   end
 
+  def self.search(search)
+    where("title LIKE ?", "%#{search}%")
+  end
+
   private 
 
   def movie_params
