@@ -34,6 +34,7 @@ gem 'mini_magick', '~> 4.3'
 gem 'kaminari'
 gem 'omdbapi'
 gem 'imdb', '~> 0.8'
+gem 'bootstrap-sass'
 
 # Use unicorn as the app server
 # gem 'unicorn'

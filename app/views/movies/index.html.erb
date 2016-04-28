@@ -1,20 +1,26 @@
-<h1>Rotten Mangoes</h1>
-  <%= link_to "Submit a movie!", new_movie_path %>
-  <hr>
-
-<%= form_tag(movies_path, :method => "get", id: "search-form") do %>
-<div>
-<%= text_field_tag :title_or_director, params[:title_or_director], placeholder: "title or director" %>
+<div class="container">
+  <div class="row home" style="text-align:center">
+    <div class="col-md-4 col-md-offset-4">
+      <h1>Rotten Mangoes</h1>
+      <%= link_to "Submit a movie!", new_movie_path %>
+      <%= form_tag(movies_path, :method => "get", id: "search-form") do %>
+      <div class="form-group">
+        <%= text_field_tag :title_or_director, params[:title_or_director], placeholder: "title or director" %>
+      </div>
+      <div class="form-group">
+        <%=select_tag :duration, options_for_select([
+          ['Any Duration','0'],
+          ['Under 90 minutes', '0-90'],
+          ['Between 90 and 120 minutes', '90-120'],
+          ['Over 120 minutes','120']]
+          )%>
+      </div>
+      <div class="form-group">
+        <%= submit_tag "Search", :class => 'btn btn-default' %>
+      </div>
+       <% end %>
+    </div>
 </div>
- <div>
-    <%=select_tag :duration, options_for_select([
-      ['Any Duration','0'],
-      ['Under 90 minutes', '0-90'],
-      ['Between 90 and 120 minutes', '90-120'],
-      ['Over 120 minutes','120']]
-      )%>
-  </div>
-<%= submit_tag "Search" %>
-<% end %>
+<hr>
 
 <%= render 'movie' %>

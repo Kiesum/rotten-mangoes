@@ -1,3 +1,32 @@
 // Place all the styles related to the movies controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  font-family: monospace;
+}
+
+.center {
+  margins: auto
+}
+
+form {
+    margin-top: 2em;
+}
+
+.home {
+  background-image: url("http://cdn.photonesta.com/images/coloringhub.com/wp-content/uploads/2013/03/Mango-coloring-pages-4.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.navbar-default {
+    background-color: #ffffe6;
+    border-color: #000;
+}
+
+.columns {
+    -webkit-column-count: 3; /* Chrome, Safari, Opera */
+    -moz-column-count: 3; /* Firefox */
+    column-count: 3;
+}

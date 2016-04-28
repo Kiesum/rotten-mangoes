@@ -1,11 +1,20 @@
- <% @movies.each do |movie| %>
-    <p>
-    <%= image_tag movie.image.poster.url %> || <%= image_tag(movie.poster_image_url, style: "max-height: 246px") %>
-    </p> 
-    <h2><%= link_to movie.title, movie_path(movie) %></h2>
-    <h3>release date: <%= formatted_date(movie.release_date) if movie.release_date%></h3>
-    <h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
-    <p><%= movie.description %></p>
-    <p>Average rating: <%= movie.review_average %>/10</p>
-    <hr>
-  <% end %>
+<div class="container">
+<%= paginate @movies %>
+    <% @movies.each_slice(3) do |movies| %>
+    <div class="row">
+        <% movies.each do |movie| %>
+        <div class="col-md-3 col-md-offset-1">
+            <p>
+            <%= image_tag movie.image.poster.url %>  <%= image_tag(movie.poster_image_url, style: "max-height: 350px") %>
+            </p> 
+            <h2><%= link_to movie.title, movie_path(movie) %></h2>
+            <h3>release date: <%= formatted_date(movie.release_date) if movie.release_date%></h3>
+            <h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
+            <p><%= movie.description %></p>
+            <p>Average rating: <%= movie.review_average %>/10
+            </p>
+        </div>
+        <% end %>
+    </div>
+    <% end %>
+</div>

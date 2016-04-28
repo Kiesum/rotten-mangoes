@@ -1,8 +1,8 @@
     class MoviesController < ApplicationController
 
       def index
-        @movies = Movie.all
-
+        @movies = Movie.page params[:page]
+        
         if params[:duration]
           min_value = params[:duration].split('-')[0]
           max_value = params[:duration].split('-')[1]
@@ -13,7 +13,7 @@
         end
 
         if params[:title_or_director] || params[:duration]
-          @movies = Movie.title_or_director(params[:title_or_director]).duration(min_value, max_value)
+          @movies = Movie.title_or_director(params[:title_or_director]).duration(min_value, max_value).page params[:page]
         end
 
       end
