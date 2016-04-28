@@ -32,6 +32,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'carrierwave'
 gem 'mini_magick', '~> 4.3'
 gem 'kaminari'
+gem 'omdbapi'
+gem 'imdb', '~> 0.8'
 
 # Use unicorn as the app server
 # gem 'unicorn'

@@ -16,16 +16,12 @@ class Movie < ActiveRecord::Base
   validates :description,
     presence: true
 
-  validates :poster_image_url,
-    presence: true
-
   validates :release_date,
     presence: true
 
   validate :release_date_is_in_the_past
 
-  scope :title, ->(title) { where("title LIKE ?", '%'+title+'%')}
-  scope :director, ->(director) { where("director LIKE ?", '%'+director+'%')}
+  scope :title_or_director, ->(title_or_director) { where("title LIKE ? OR director LIKE ?", '%'+title_or_director+'%', '%'+title_or_director+'%')}
   scope :duration, ->(min_value, max_value) { where("runtime_in_minutes >= ? AND runtime_in_minutes < ?", min_value, max_value) }
 
   def review_average

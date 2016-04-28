@@ -1,6 +1,6 @@
  <% @movies.each do |movie| %>
     <p>
-    <%= image_tag movie.image.poster.url %>
+    <%= image_tag movie.image.poster.url %> || <%= image_tag(movie.poster_image_url, style: "max-height: 246px") %>
     </p> 
     <h2><%= link_to movie.title, movie_path(movie) %></h2>
     <h3>release date: <%= formatted_date(movie.release_date) if movie.release_date%></h3>
