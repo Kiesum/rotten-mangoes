@@ -14,10 +14,11 @@ form {
     margin-top: 2em;
 }
 
-.home {
-  background-image: url("http://cdn.photonesta.com/images/coloringhub.com/wp-content/uploads/2013/03/Mango-coloring-pages-4.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
+
+
+
+.title {
+  color: #ff9900;
 }
 
 .navbar-default {
@@ -30,3 +31,14 @@ form {
     -moz-column-count: 3; /* Firefox */
     column-count: 3;
 }
+
+a {
+  color: #999900;
+}
+
+hr {
+  height:0; 
+  border:0; 
+  border-top:2px solid #999900; 
+}
+

@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row home" style="text-align:center">
-    <div class="col-md-4 col-md-offset-4">
-      <h1>Rotten Mangoes</h1>
+    <div>
+      <h1 class="title">Rotten Mangoes</h1>
       <%= link_to "Submit a movie!", new_movie_path %>
       <%= form_tag(movies_path, :method => "get", id: "search-form") do %>
       <div class="form-group">
