@@ -1,45 +1,51 @@
- <%= form_for @movie do |f| %>
+ <div class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-5">
+       <%= form_for @movie do |f| %>
 
- <% if @movie.errors.any? %>
-        <div>
-          <%= pluralize(@movie.errors.count, "error") %> prevented this movie from being submitted:
-          <ul>
-            <% @movie.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
+       <% if @movie.errors.any? %>
+              <div class="form-group">
+                <%= pluralize(@movie.errors.count, "error") %> prevented this movie from being submitted:
+                <ul>
+                  <% @movie.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                  <% end %>
+                </ul>
+              </div>
             <% end %>
-          </ul>
+
+        <div class="form-group">
+          <%= f.label :title %><br>
+          <%= f.text_field :title %>
+        </div>
+        <div class="form-group">
+          <%= f.label :release_date %><br>
+          <%= f.date_field :release_date %>
+        </div>
+        <div class="form-group">
+          <%= f.label :director %><br>
+          <%= f.text_field :director %>
+        </div>
+        <div class="form-group">
+          <%= f.label :runtime_in_minutes %><br>
+          <%= f.number_field :runtime_in_minutes %>
+        </div>
+        <div class="form-group">
+          <%= f.label :poster_image_url %><br>
+          <%= f.text_field :poster_image_url %>
+        </div>
+        <div class="form-group">
+          <%= f.label :description %><br>
+          <%= f.text_area :description %>
+        </div>
+        <div class="form-group">
+          <%= f.label :image %><br>
+          <%= f.file_field :image %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "Submit", :class => "btn btn-default" %> 
         </div>
       <% end %>
-
-  <div>
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    </div>
   </div>
-  <div>
-    <%= f.label :release_date %><br>
-    <%= f.date_field :release_date %>
-  </div>
-  <div>
-    <%= f.label :director %><br>
-    <%= f.text_field :director %>
-  </div>
-  <div>
-    <%= f.label :runtime_in_minutes %><br>
-    <%= f.number_field :runtime_in_minutes %>
-  </div>
-  <div>
-    <%= f.label :poster_image_url %><br>
-    <%= f.text_field :poster_image_url %>
-  </div>
-  <div>
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div>
-    <%= f.label :image %><br>
-    <%= f.file_field :image %>
-  </div>
-  <div>
-    <%= f.submit "Submit" %> 
-  </div>
-<% end %>
+</div>
