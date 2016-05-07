@@ -1,5 +1,6 @@
  <div class="container">
   <div class="row">
+    <center><h3>Add your favourite movie</h3></center> 
     <div class="col-md-4 col-md-offset-5">
        <%= form_for @movie do |f| %>
 
@@ -12,8 +13,8 @@
                   <% end %>
                 </ul>
               </div>
-            <% end %>
-
+            <% end %>   
+            
         <div class="form-group">
           <%= f.label :title %><br>
           <%= f.text_field :title %>
